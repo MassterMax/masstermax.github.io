@@ -1,22 +1,47 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Редирект...</title>
-  <script>
-    const urls = [
-      "https://forms.yandex.ru/u/1234567890abcd",
-      "https://forms.yandex.ru/u/0987654321dcba"
-    ];
-    const choice = Math.random() < 0.5 ? 0 : 1;
-    window.location.href = urls[choice];
-  </script>
+  <title>MassterMax</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      background: #0f0f0f;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    h1 {
+      font-size: 64px;
+      font-weight: bold;
+      background: linear-gradient(90deg, #ff4e50, #f9d423, #24c6dc, #5433ff);
+      background-size: 200% 200%;
+      background-position: center;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+      transition: background-position 0.1s ease;
+    }
+  </style>
 </head>
 <body>
-  <p>Если вы не перенаправлены автоматически, <a id="link" href="#">нажмите сюда</a>.</p>
+  <h1 id="title">Hello, World!</h1>
+
   <script>
-    // Подстраховка на случай отключённого JS
-    document.getElementById("link").href = urls[choice];
+    const title = document.getElementById('title');
+    document.addEventListener('mousemove', (e) => {
+      const xPercent = e.clientX / window.innerWidth;
+      const yPercent = e.clientY / window.innerHeight;
+
+      const xPos = Math.round(xPercent * 100);
+      const yPos = Math.round(yPercent * 100);
+
+      title.style.backgroundPosition = `${xPos}% ${yPos}%`;
+    });
   </script>
 </body>
 </html>
