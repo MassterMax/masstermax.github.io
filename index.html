@@ -1,47 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>MassterMax</title>
-  <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      background: #0f0f0f;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+<meta charset="UTF-8" />
+<title>MassterMax</title>
+<style>
+  html, body {
+    margin: 0; 
+    height: 100%;
+    background: #0f0f0f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
 
-    h1 {
-      font-size: 64px;
-      font-weight: bold;
-      background: linear-gradient(90deg, #ff4e50, #f9d423, #24c6dc, #5433ff);
-      background-size: 200% 200%;
-      background-position: center;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-align: center;
-      transition: background-position 0.1s ease;
-    }
-  </style>
+  .title {
+    font-size: 96px;
+    font-weight: bold;
+    background: linear-gradient(270deg, #ff4e50, #f9d423, #24c6dc, #5433ff, #ff4e50);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 6s linear infinite;
+  }
+
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+  }
+</style>
 </head>
 <body>
-  <h1 id="title">Hello, World!</h1>
 
-  <script>
-    const title = document.getElementById('title');
-    document.addEventListener('mousemove', (e) => {
-      const xPercent = e.clientX / window.innerWidth;
-      const yPercent = e.clientY / window.innerHeight;
+<h1 class="title">MassterMax</h1>
 
-      const xPos = Math.round(xPercent * 100);
-      const yPos = Math.round(yPercent * 100);
-
-      title.style.backgroundPosition = `${xPos}% ${yPos}%`;
-    });
-  </script>
 </body>
 </html>
