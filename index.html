@@ -1,29 +1,22 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8">
-  <title>AB Redirect</title>
+  <meta charset="UTF-8">
+  <title>Редирект...</title>
   <script>
-    (function () {
-      /* Массив ссылок на две версии анкеты */
-      const variants = [
-        "https://forms.yandex.ru/u/1234567890abcd/", // контроль
-        "https://forms.yandex.ru/u/0987654321abcd/"  // эксперимент
-      ];
-      /* Выбираем случайный вариант */
-      const target = variants[Math.floor(Math.random() * variants.length)];
-
-      /* Отметка события в Яндекс.Метрике (опционально) */
-      if (window.ym) {
-        ym(12345678, "reachGoal", target.includes("1234567890") ? "control" : "experiment");
-      }
-
-      /* Перенаправляем пользователя */
-      window.location.replace(target);
-    })();
+    const urls = [
+      "https://forms.yandex.ru/u/1234567890abcd",
+      "https://forms.yandex.ru/u/0987654321dcba"
+    ];
+    const choice = Math.random() < 0.5 ? 0 : 1;
+    window.location.href = urls[choice];
   </script>
 </head>
 <body>
-  <noscript>Для участия в опросе включите JavaScript.</noscript>
+  <p>Если вы не перенаправлены автоматически, <a id="link" href="#">нажмите сюда</a>.</p>
+  <script>
+    // Подстраховка на случай отключённого JS
+    document.getElementById("link").href = urls[choice];
+  </script>
 </body>
 </html>
