@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>AB Redirect</title>
+  <script>
+    (function () {
+      /* Массив ссылок на две версии анкеты */
+      const variants = [
+        "https://forms.yandex.ru/u/1234567890abcd/", // контроль
+        "https://forms.yandex.ru/u/0987654321abcd/"  // эксперимент
+      ];
+      /* Выбираем случайный вариант */
+      const target = variants[Math.floor(Math.random() * variants.length)];
+
+      /* Отметка события в Яндекс.Метрике (опционально) */
+      if (window.ym) {
+        ym(12345678, "reachGoal", target.includes("1234567890") ? "control" : "experiment");
+      }
+
+      /* Перенаправляем пользователя */
+      window.location.replace(target);
+    })();
+  </script>
+</head>
+<body>
+  <noscript>Для участия в опросе включите JavaScript.</noscript>
+</body>
+</html>
